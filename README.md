@@ -20,7 +20,7 @@ How to use
 
 If you just want to test whether it works, you just need run run.m in MATLab.
 
-# Input format
+#### Input format
 A is a m-n matrix
 
 x0 is x's initial value, a n vector 
