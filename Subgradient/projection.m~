@@ -1,6 +1,0 @@
-function P = projection(A)
-    [m,n] = size(A);
-    I = eyes(n
-    P = A*inv(A'*A)*A';
-end
-
