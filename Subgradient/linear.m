@@ -1,4 +1,4 @@
-function x = linear2(A,b,c,T,slater,x0,z,kmax)
+function x = linear(A,b,c,T,slater,x0,z,kmax)
     [~,n] = size(A);
     %Transform into model program
     %i.e., x->e=ones(n,1) transform the slater point into ones
