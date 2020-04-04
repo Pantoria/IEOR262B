@@ -1,14 +1,15 @@
-A = [1,1,10,0;1,-1,0,1];
+A = [1,1,1,0;1,-1,0,1];
 b = [100;50];
 c = [-9;-10;0;0];
-kmax = 1000;
-slater = [0.5;0.5;99;50];
-z = 10;
+kmax = 10000;
+slater = [2,2,96,50];
+x0 = [48,50,2,52]';
+z = -932;
 
 %this is the parameter for different kinds of step size
 T = 1;
 
-x = linear(A,b,c,T,slater,z,kmax);
+x = linear(A,b,c,T,slater,x0,z,kmax);
 
 disp("The optimal solution x is ")
 disp(x)

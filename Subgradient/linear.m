@@ -1,4 +1,4 @@
-function x = linear(A,b,c,T,slater,z,kmax)
+function x = linear2(A,b,c,T,slater,x0,z,kmax)
     [~,n] = size(A);
     %Transform into model program
     %i.e., x->e=ones(n,1) transform the slater point into ones
@@ -8,10 +8,10 @@ function x = linear(A,b,c,T,slater,z,kmax)
     %shape the objective function into max e_i^Tx
     A = [A;c'];
     b = [b;z];
-    
-    x = A\b;
+    x = diag(1./slater)*x0;
     %calculate the projection matrix
     P = projection(A);
+    
     
     %Container for all potential values
     values = zeros(kmax,1);
@@ -30,14 +30,25 @@ function x = linear(A,b,c,T,slater,z,kmax)
             case 3
                 t = 1/sqrt(k+1);
         end
-        x = subgradient(A,x,t,P);
+%         x = subgradient(A,x,t,P);
+        ind = x==min(x(:));
+        ei = zeros(n,1);
+        ei(ind) = 1;
+%         y = x - t*P*ei/norm(P*ei)^2;
+%         piy = affineMap(y);
+%         if c'*(e-piy) > 4/3*c'*(e-y)
+%             x = piy;
+%         else
+%             x = y;
+%         end
+        x = x + 2*t*P*ei/norm(P*ei);
         values(k) = max(x(:));
         xs(k,:) = x;
-        norm(A*x-b);
     end
     
     ind = values==max(values(:));
-    x = xs(ind,:);
-    x = diag(slater)*x';
+    x = xs(ind,:)';
+    x = affineMap(x);
+    x = diag(slater)*x;
 end
 
