@@ -27,11 +27,11 @@ A is a m-n matrix
 
 T is the kind of step-size:
 
-​	T = 1: step-size = $\frac{2}{k+2}$
+​	T = 1: step-size  <img src="https://latex.codecogs.com/gif.latex?=\frac{2}{k+2}" /> 
 
-​	T = 2: step-size = $\frac{2}{1+\sqrt{1+\frac{4}{t^2}}}$
+​	T = 2: step-size <img src="https://latex.codecogs.com/gif.latex?=\frac{2}{1+\sqrt{1+\frac{4}{t^2}}}" />
 
-​	T = 3: step-size = $\frac{1}{k+1}$
+​	T = 3: step-size <img src="https://latex.codecogs.com/gif.latex?=\frac{1}{k+1}" />
 
 And if you want to add some other step-size, you could just turn in linear.m and look for the swith T line.
 
